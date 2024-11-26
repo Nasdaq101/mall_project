@@ -5,16 +5,13 @@ MALL PROJECT is an e-commerce system developed based on the most popular microse
 
 # BACKEND<br>
 
-## Mybatis+Mybatis Plus<br>
 ## SpringBoot<br>
 ## SpringCloud<br>
+## Mybatis+Mybatis Plus<br>
 ## lombok<br>
 ## RestTemplate<br>
-## Nacos<br>
-## OpenFeign<br>
 ## HttpClient<br>
 ## JWT<br>
-## Sentinel<br>
 ## Seata<br>
 
 # FRONTEND<br>
@@ -33,8 +30,7 @@ MALL PROJECT is an e-commerce system developed based on the most popular microse
 ## Docker<br>
 ## RabbitMQ<br>
 ## Elasticsearch<br>
-## RabbitMQ<br>
-## Elasticsearch<br>
+
 
 
 # HOW TO RUN THE PROJECT<br>
