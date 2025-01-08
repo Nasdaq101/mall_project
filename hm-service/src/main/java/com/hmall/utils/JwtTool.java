@@ -21,13 +21,11 @@ public class JwtTool {
     }
 
     /**
-     * 创建 access-token
-     *
-     * @param userDTO 用户信息
+     * create access-token
      * @return access-token
      */
     public String createToken(Long userId, Duration ttl) {
-        // 1.生成jws
+        // 1.create jws
         return JWT.create()
                 .setPayload("user", userId)
                 .setExpiresAt(new Date(System.currentTimeMillis() + ttl.toMillis()))
@@ -36,47 +34,44 @@ public class JwtTool {
     }
 
     /**
-     * 解析token
+     * serialize token
      *
      * @param token token
-     * @return 解析刷新token得到的用户信息
+     * @return serialize info within token
      */
     public Long parseToken(String token) {
-        // 1.校验token是否为空
+        // 1.validate if token is null?
         if (token == null) {
-            throw new UnauthorizedException("未登录");
+            throw new UnauthorizedException("need log in");
         }
-        // 2.校验并解析jwt
+        // 2.validate and serialize jwt
         JWT jwt;
         try {
             jwt = JWT.of(token).setSigner(jwtSigner);
         } catch (Exception e) {
-            throw new UnauthorizedException("无效的token", e);
+            throw new UnauthorizedException("invalid token", e);
         }
-        // 2.校验jwt是否有效
+        // 2.validate if jwt valid?
         if (!jwt.verify()) {
-            // 验证失败
-            throw new UnauthorizedException("无效的token");
+            throw new UnauthorizedException("invalid token");
         }
-        // 3.校验是否过期
+        // 3.validate expiration (date)
         try {
             JWTValidator.of(jwt).validateDate();
         } catch (ValidateException e) {
-            throw new UnauthorizedException("token已经过期");
+            throw new UnauthorizedException("expired token");
         }
-        // 4.数据格式校验
+        // 4.validate data format
         Object userPayload = jwt.getPayload("user");
         if (userPayload == null) {
-            // 数据为空
-            throw new UnauthorizedException("无效的token");
+            throw new UnauthorizedException("invalid token");
         }
 
-        // 5.数据解析
+        // 5.serialize data
         try {
            return Long.valueOf(userPayload.toString());
         } catch (RuntimeException e) {
-            // 数据格式有误
-            throw new UnauthorizedException("无效的token");
+            throw new UnauthorizedException("invalid token");
         }
     }
 }

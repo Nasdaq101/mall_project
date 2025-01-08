@@ -12,11 +12,8 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 订单详情表
+ * order details
  * </p>
- *
- * @author 虎哥
- * @since 2023-05-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,53 +24,53 @@ public class Cart implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 购物车条目id 
+     * item id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户id
+     * user id
      */
     private Long userId;
 
     /**
-     * sku商品id
+     * sku item id
      */
     private Long itemId;
 
     /**
-     * 购买数量
+     * item amount
      */
     private Integer num;
 
     /**
-     * 商品标题
+     * item name
      */
     private String name;
 
     /**
-     * 商品动态属性键值集
+     * item spec
      */
     private String spec;
 
     /**
-     * 价格,单位：分
+     * price, cent
      */
     private Integer price;
 
     /**
-     * 商品图片
+     * item image
      */
     private String image;
 
     /**
-     * 创建时间
+     * create time
      */
     private LocalDateTime createTime;
 
     /**
-     * 更新时间
+     * update time
      */
     private LocalDateTime updateTime;
 

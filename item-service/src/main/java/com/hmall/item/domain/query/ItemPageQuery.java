@@ -8,16 +8,16 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel(description = "商品分页查询条件")
+@ApiModel(description = "page query condition")
 public class ItemPageQuery extends PageQuery {
-    @ApiModelProperty("搜索关键字")
+    @ApiModelProperty("key word")
     private String key;
-    @ApiModelProperty("商品分类")
+    @ApiModelProperty("item category")
     private String category;
-    @ApiModelProperty("商品品牌")
+    @ApiModelProperty("item brand")
     private String brand;
-    @ApiModelProperty("价格最小值")
+    @ApiModelProperty("min price")
     private Integer minPrice;
-    @ApiModelProperty("价格最大值")
+    @ApiModelProperty("max price")
     private Integer maxPrice;
 }

@@ -13,11 +13,8 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 商品表
+ * item list
  * </p>
- *
- * @author 虎哥
- * @since 2023-05-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -28,84 +25,84 @@ public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 商品id
+     * item id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * SKU名称
+     * SKU name
      */
     private String name;
 
     /**
-     * 价格（分）
+     * price, cent
      */
     private Integer price;
 
     /**
-     * 库存数量
+     * stock amount
      */
     private Integer stock;
 
     /**
-     * 商品图片
+     * item image
      */
     private String image;
 
     /**
-     * 类目名称
+     * item category
      */
     private String category;
 
     /**
-     * 品牌名称
+     * item brand
      */
     private String brand;
 
     /**
-     * 规格
+     * item spec
      */
     private String spec;
 
     /**
-     * 销量
+     * item sold
      */
     private Integer sold;
 
     /**
-     * 评论数
+     * comment amount
      */
     private Integer commentCount;
 
     /**
-     * 是否是推广广告，true/false
+     * enable ad?  true/false
      */
     @TableField("isAD")
     private Boolean isAD;
 
     /**
-     * 商品状态 1-正常，2-下架，3-删除
+     * status 1-online，2-offline，3-deleted
      */
     private Integer status;
 
     /**
-     * 创建时间
+     * create time
      */
     private LocalDateTime createTime;
 
     /**
-     * 更新时间
+     * update time
      */
     private LocalDateTime updateTime;
 
     /**
-     * 创建人
+     * creater
      */
     private Long creater;
 
     /**
-     * 修改人
+     * updater
      */
     private Long updater;
 

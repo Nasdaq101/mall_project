@@ -28,11 +28,8 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- * 订单详情表 服务实现类
+ * order details
  * </p>
- *
- * @author 虎哥
- * @since 2023-05-05
  */
 @Service
 @RequiredArgsConstructor
@@ -45,57 +42,56 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
 
     @Override
     public void addItem2Cart(CartFormDTO cartFormDTO) {
-        // 1.获取登录用户
+        // 1.get current user
         Long userId = UserContext.getUser();
 
-        // 2.判断是否已经存在
+        // 2.check if exists?
         if(checkItemExists(cartFormDTO.getItemId(), userId)){
-            // 2.1.存在，则更新数量
+            // 2.1.yes?update number
             baseMapper.updateNum(cartFormDTO.getItemId(), userId);
             return;
         }
-        // 2.2.不存在，判断是否超过购物车数量
+        // 2.2.no? check if already full
         checkCartsFull(userId);
 
-        // 3.新增购物车条目
-        // 3.1.转换PO
+        // 3.new cart
+        // 3.1.copy bean
         Cart cart = BeanUtils.copyBean(cartFormDTO, Cart.class);
-        // 3.2.保存当前用户
+        // 3.2.save current user
         cart.setUserId(userId);
-        // 3.3.保存到数据库
+        // 3.3.save to sql
         save(cart);
     }
 
     @Override
     public List<CartVO> queryMyCarts() {
-        // 1.查询我的购物车列表
+        // 1.query shopping cart
         List<Cart> carts = lambdaQuery().eq(Cart::getUserId, UserContext.getUser()).list();
         if (CollUtils.isEmpty(carts)) {
             return CollUtils.emptyList();
         }
 
-        // 2.转换VO
+        // 2.bean - vo
         List<CartVO> vos = BeanUtils.copyList(carts, CartVO.class);
 
-        // 3.处理VO中的商品信息
+        // 3.vo item info
         handleCartItems(vos);
 
-        // 4.返回
         return vos;
     }
 
     private void handleCartItems(List<CartVO> vos) {
-        // 1.获取商品id
+        // 1.get item ids
         Set<Long> itemIds = vos.stream().map(CartVO::getItemId).collect(Collectors.toSet());
-        // 2.查询商品
-        //restTemplate--网络http通信和nacos技术--注册中心获取功能接口的url，负载均衡端口不止一个
+        // 2.query item
+        //restTemplate--httpclient + nacos -- registration center get functional api url, multiple nginx
         /*List<ServiceInstance> instances = discoveryClient.getInstances("item-service");
         if (CollUtil.isEmpty(instances)){
             return;
         }
         ServiceInstance instance = instances.get(RandomUtil.randomInt(instances.size()));
 
-        //通过发起网络请求获取itemservice当中的获取商品信息功能
+        //use resttemplate, httpclient - item service - item info
         ResponseEntity<List<ItemDTO>> response = restTemplate.exchange(
                 instance.getUri()+"/items?ids={ids}",
                 HttpMethod.GET,
@@ -104,20 +100,17 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
                 },
                 Map.of("ids", CollUtil.join(itemIds, ","))
         );
-        //解析响应
+        // serialize
         if (!response.getStatusCode().is2xxSuccessful()){
-            //查询失败
             return;
         }
         List<ItemDTO> items = response.getBody();*/
-        //openfeign技术化简restTemplate和nacos技术
+        //openfeign - restTemplate + nacos
         List<ItemDTO> items = itemClient.queryItemByIds(itemIds);
         if (CollUtils.isEmpty(items)) {
             return;
         }
-        // 3.转为 id 到 item的map
         Map<Long, ItemDTO> itemMap = items.stream().collect(Collectors.toMap(ItemDTO::getId, Function.identity()));
-        // 4.写入vo
         for (CartVO v : vos) {
             ItemDTO item = itemMap.get(v.getItemId());
             if (item == null) {
@@ -132,19 +125,17 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
     @Override
     @Transactional
     public void removeByItemIds(Collection<Long> itemIds) {
-        // 1.构建删除条件，userId和itemId
         QueryWrapper<Cart> queryWrapper = new QueryWrapper<Cart>();
         queryWrapper.lambda()
                 .eq(Cart::getUserId, UserContext.getUser())
                 .in(Cart::getItemId, itemIds);
-        // 2.删除
         remove(queryWrapper);
     }
 
     private void checkCartsFull(Long userId) {
         int count = lambdaQuery().eq(Cart::getUserId, userId).count();
         if (count >= cartProPerties.getMaxItems()) {
-            throw new BizIllegalException(StrUtil.format("用户购物车课程不能超过{}", cartProPerties.getMaxItems()));
+            throw new BizIllegalException(StrUtil.format("max item number is {}", cartProPerties.getMaxItems()));
         }
     }
 

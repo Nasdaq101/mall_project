@@ -8,7 +8,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MyGlobalFilter implements GlobalFilter, Ordered {
 
     @Override

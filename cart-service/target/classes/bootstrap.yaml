@@ -1,11 +1,11 @@
 spring:
   application:
-    name: cart-service   #微服务名称
+    name: cart-service
   profiles:
     active: dev
   cloud:
     nacos:
-      server-addr: "*******"   # IP+端口号
+      server-addr: "*******"   # IP+port
       config:
         file-extension: yaml
         shared-configs:

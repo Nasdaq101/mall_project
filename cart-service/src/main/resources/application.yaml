@@ -2,14 +2,14 @@ server:
   port: 8082
 feign:
   okhttp:
-    enabled: true # 开启OKHttp功能
+    enabled: true # enable OKHttp
   sentinel:
-    enabled: true # 开启feign对sentinel的支持
+    enabled: true # enable feign-sentinel
 hm:
   db:
     database: hm-cart
   swagger:
-    title: "黑马商场购物车服务接口文档"
+    title: "Cart Service API Documentation"
     package: com.hmall.cart.controller
 spring:
   cloud:

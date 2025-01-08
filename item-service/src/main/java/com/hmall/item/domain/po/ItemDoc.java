@@ -7,36 +7,36 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@ApiModel(description = "索引库实体")
+@ApiModel(description = "doc entity")
 public class ItemDoc{
 
-    @ApiModelProperty("商品id")
+    @ApiModelProperty("item id")
     private String id;
 
-    @ApiModelProperty("商品名称")
+    @ApiModelProperty("item name")
     private String name;
 
-    @ApiModelProperty("价格（分）")
+    @ApiModelProperty("price, cent")
     private Integer price;
 
-    @ApiModelProperty("商品图片")
+    @ApiModelProperty("item image")
     private String image;
 
-    @ApiModelProperty("类目名称")
+    @ApiModelProperty("item category")
     private String category;
 
-    @ApiModelProperty("品牌名称")
+    @ApiModelProperty("item brand")
     private String brand;
 
-    @ApiModelProperty("销量")
+    @ApiModelProperty("item sold")
     private Integer sold;
 
-    @ApiModelProperty("评论数")
+    @ApiModelProperty("comment amount")
     private Integer commentCount;
 
-    @ApiModelProperty("是否是推广广告，true/false")
+    @ApiModelProperty("enable ad? true/false")
     private Boolean isAD;
 
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("uopdate time")
     private LocalDateTime updateTime;
 }

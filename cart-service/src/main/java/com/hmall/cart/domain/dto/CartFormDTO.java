@@ -5,16 +5,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "新增购物车商品表单实体")
+@ApiModel(description = "new item entity in shopping cart")
 public class CartFormDTO {
-    @ApiModelProperty("商品id")
+    @ApiModelProperty("item id")
     private Long itemId;
-    @ApiModelProperty("商品标题")
+    @ApiModelProperty("item name")
     private String name;
-    @ApiModelProperty("商品动态属性键值集")
+    @ApiModelProperty("item spec")
     private String spec;
-    @ApiModelProperty("价格,单位：分")
+    @ApiModelProperty("price, cent")
     private Integer price;
-    @ApiModelProperty("商品图片")
+    @ApiModelProperty("item image")
     private String image;
 }

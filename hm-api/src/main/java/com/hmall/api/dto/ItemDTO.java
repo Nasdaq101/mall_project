@@ -5,30 +5,30 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "商品实体")
+@ApiModel(description = "item dto")
 public class ItemDTO {
-    @ApiModelProperty("商品id")
+    @ApiModelProperty("item id")
     private Long id;
-    @ApiModelProperty("SKU名称")
+    @ApiModelProperty("SKU name")
     private String name;
-    @ApiModelProperty("价格（分）")
+    @ApiModelProperty("price(cent)")
     private Integer price;
-    @ApiModelProperty("库存数量")
+    @ApiModelProperty("stock amount")
     private Integer stock;
-    @ApiModelProperty("商品图片")
+    @ApiModelProperty("image")
     private String image;
-    @ApiModelProperty("类目名称")
+    @ApiModelProperty("category")
     private String category;
-    @ApiModelProperty("品牌名称")
+    @ApiModelProperty("brand name")
     private String brand;
-    @ApiModelProperty("规格")
+    @ApiModelProperty("spec")
     private String spec;
-    @ApiModelProperty("销量")
+    @ApiModelProperty("sold")
     private Integer sold;
-    @ApiModelProperty("评论数")
+    @ApiModelProperty("comment count")
     private Integer commentCount;
-    @ApiModelProperty("是否是推广广告，true/false")
+    @ApiModelProperty("if ad? true/false")
     private Boolean isAD;
-    @ApiModelProperty("商品状态 1-正常，2-下架，3-删除")
+    @ApiModelProperty("item status 1-online，2-offline，3-deleted")
     private Integer status;
 }

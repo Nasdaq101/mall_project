@@ -19,14 +19,14 @@ public class ItemClientFallbackFactory implements FallbackFactory<ItemClient> {
         return new ItemClient() {
             @Override
             public List<ItemDTO> queryItemByIds(Collection<Long> ids) {
-                log.error("远程调用ItemClient#queryItemByIds方法出现异常，参数：{}", ids, cause);
-                // 查询购物车允许失败，查询失败，返回空集合
+                log.error("get ItemClient#queryItemByIds exception，params：{}", ids, cause);
+                // fail, return null;
                 return CollUtils.emptyList();
             }
 
             @Override
             public void deductStock(Collection<OrderDetailDTO> items) {
-                // 库存扣减业务需要触发事务回滚，查询失败，抛出异常
+                // fail, exception
                 throw new RuntimeException(cause);
             }
         };

@@ -8,36 +8,33 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 订单详情表
+ * order details
  * </p>
- *
- * @author 虎哥
- * @since 2023-05-05
  */
 @Data
-@ApiModel(description = "购物车VO实体")
+@ApiModel(description = "shopping cart VO entity")
 public class CartVO {
-    @ApiModelProperty("购物车条目id ")
+    @ApiModelProperty("shopping cart id ")
     private Long id;
-    @ApiModelProperty("sku商品id")
+    @ApiModelProperty("sku item id")
     private Long itemId;
-    @ApiModelProperty("购买数量")
+    @ApiModelProperty("amount")
     private Integer num;
-    @ApiModelProperty("商品标题")
+    @ApiModelProperty("name")
     private String name;
-    @ApiModelProperty("商品动态属性键值集")
+    @ApiModelProperty("spec")
     private String spec;
-    @ApiModelProperty("价格,单位：分")
+    @ApiModelProperty("price, cent")
     private Integer price;
-    @ApiModelProperty("商品最新价格")
+    @ApiModelProperty("updated price")
     private Integer newPrice;
-    @ApiModelProperty("商品最新状态")
+    @ApiModelProperty("updated status")
     private Integer status = 1;
-    @ApiModelProperty("商品最新库存")
+    @ApiModelProperty("updated stock")
     private Integer stock = 10;
-    @ApiModelProperty("商品图片")
+    @ApiModelProperty("item image")
     private String image;
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("create time")
     private LocalDateTime createTime;
 
 }

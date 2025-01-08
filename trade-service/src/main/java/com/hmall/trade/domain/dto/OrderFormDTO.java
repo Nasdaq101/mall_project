@@ -8,12 +8,12 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@ApiModel(description = "交易下单表单实体")
+@ApiModel(description = "order form dto")
 public class OrderFormDTO {
-    @ApiModelProperty("收货地址id")
+    @ApiModelProperty("address id")
     private Long addressId;
-    @ApiModelProperty("支付类型")
+    @ApiModelProperty("payment type")
     private Integer paymentType;
-    @ApiModelProperty("下单商品列表")
+    @ApiModelProperty("order details")
     private List<OrderDetailDTO> details;
 }
