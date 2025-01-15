@@ -2,7 +2,7 @@ server:
   port: 8086
 spring:
   application:
-    name: pay-service   #微服务名称
+    name: pay-service
   profiles:
     active: dev
   datasource:
@@ -14,11 +14,11 @@ spring:
     nacos:
       server-addr: "***"
   rabbitmq:
-    host: "***" # 你的虚拟机IP
-    port: 5672 # 端口
-    virtual-host: "***" # 虚拟主机
-    username: "***" # 用户名
-    password: "***" # 密码
+    host: "***" # ip
+    port: 5672 # port
+    virtual-host: "***" # host
+    username: "***" # username
+    password: "***" # pswd
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
@@ -37,7 +37,7 @@ knife4j:
   enable: true
   openapi:
     title: 黑马商城支付服务接口文档
-    description: "黑马商城支付服务接口文档"
+    description: "pay api"
     email: zhanghuyi@itcast.cn
     concat: 虎哥
     url: https://www.itcast.cn
@@ -50,4 +50,4 @@ knife4j:
           - com.hmall.pay.controller
 feign:
   okhttp:
-    enabled: true # 开启OKHttp功能
+    enabled: true

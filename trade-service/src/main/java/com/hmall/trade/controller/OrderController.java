@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @ApiOperation("mark order status as paid successfully")
-    @ApiImplicitParam(name = "orderId", value = "订order id", paramType = "path")
+    @ApiImplicitParam(name = "orderId", value = "order id", paramType = "path")
     @PutMapping("/{orderId}")
     public void markOrderPaySuccess(@PathVariable("orderId") Long orderId) {
         orderService.markOrderPaySuccess(orderId);

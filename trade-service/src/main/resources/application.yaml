@@ -4,12 +4,12 @@ hm:
   db:
     database: hm-trade
   swagger:
-    title: "黑马商场交易服务接口文档"
+    title: "trade api"
     package: com.hmall.trade.controller
 spring:
   rabbitmq:
-    host: "***" # 你的虚拟机IP
-    port: 5672 # 端口
-    virtual-host: "***" # 虚拟主机
-    username: "***" # 用户名
-    password: "***" # 密码
+    host: "***" # IP
+    port: 5672 # port
+    virtual-host: "***" # host name
+    username: "***" # username
+    password: "***" # pswd

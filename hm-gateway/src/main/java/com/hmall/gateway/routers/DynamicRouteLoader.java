@@ -27,7 +27,7 @@ public class DynamicRouteLoader {
 
     private final String dataId = "gateway-routes.json";
     private final String group = "DEFAULT_GROUP";
-    // 保存更新过的路由id
+    // save updated id
     private final Set<String> routeIds = new HashSet<>();
 
     @PostConstruct
@@ -49,19 +49,19 @@ public class DynamicRouteLoader {
     }
 
     public void updateConfigInfo(String configInfo){
-        log.debug("监听到路由配置变更，{}", configInfo);
-        // 1.反序列化
+        log.debug("router settings updated，{}", configInfo);
+        // 1.de-serializing
         List<RouteDefinition> routeDefinitions = JSONUtil.toList(configInfo, RouteDefinition.class);
-        // 2.更新前先清空旧路由
-        // 2.1.清除旧路由
+        // 2.update
+        // 2.1.delete old router
         for (String routeId : routeIds) {
             writer.delete(Mono.just(routeId)).subscribe();
         }
         routeIds.clear();
-        // 3.更新路由
+        // 3.update router
         for (RouteDefinition routeDefinition : routeDefinitions) {
             writer.save(Mono.just(routeDefinition)).subscribe();
-            // 3.2.记录路由id，方便将来删除
+            // 3.2.save router id for future deletion
             routeIds.add(routeDefinition.getId());
         }
     }
