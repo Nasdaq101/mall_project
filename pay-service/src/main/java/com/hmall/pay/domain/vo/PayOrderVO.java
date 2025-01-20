@@ -8,42 +8,42 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 支付订单
+ * pay order vo
  * </p>
  */
 @Data
-@ApiModel(description = "支付单vo实体")
+@ApiModel(description = "pay order vo")
 public class PayOrderVO {
     @ApiModelProperty("id")
     private Long id;
-    @ApiModelProperty("业务订单号")
+    @ApiModelProperty("business order number")
     private Long bizOrderNo;
-    @ApiModelProperty("支付单号")
+    @ApiModelProperty("pay order number")
     private Long payOrderNo;
-    @ApiModelProperty("支付用户id")
+    @ApiModelProperty("business user id")
     private Long bizUserId;
-    @ApiModelProperty("支付渠道编码")
+    @ApiModelProperty("channel code")
     private String payChannelCode;
-    @ApiModelProperty("支付金额，单位分")
+    @ApiModelProperty("amount/cents")
     private Integer amount;
-    @ApiModelProperty("付类型，1：h5,2:小程序，3：公众号，4：扫码，5：余额支付")
+    @ApiModelProperty("payment type，1：h5,2:mini-app，3：official account，4：qr-code，5：balance")
     private Integer payType;
-    @ApiModelProperty("付状态，0：待提交，1:待支付，2：支付超时或取消，3：支付成功")
+    @ApiModelProperty("status，0：not committed，1:not paid，2：timeout/cancelled，3：completed")
     private Integer status;
-    @ApiModelProperty("拓展字段，用于传递不同渠道单独处理的字段")
+    @ApiModelProperty("expand json")
     private String expandJson;
-    @ApiModelProperty("第三方返回业务码")
+    @ApiModelProperty("result code")
     private String resultCode;
-    @ApiModelProperty("第三方返回提示信息")
+    @ApiModelProperty("result msg")
     private String resultMsg;
-    @ApiModelProperty("支付成功时间")
+    @ApiModelProperty("payment success time")
     private LocalDateTime paySuccessTime;
-    @ApiModelProperty("支付超时时间")
+    @ApiModelProperty("payment over time")
     private LocalDateTime payOverTime;
-    @ApiModelProperty("支付二维码链接")
+    @ApiModelProperty("qr-code url")
     private String qrCodeUrl;
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("create time")
     private LocalDateTime createTime;
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("update time")
     private LocalDateTime updateTime;
 }

@@ -6,11 +6,8 @@ import com.hmall.pay.domain.po.PayOrder;
 
 /**
  * <p>
- * 支付订单 Mapper 接口
+ * pay order Mapper
  * </p>
- *
- * @author 虎哥
- * @since 2023-05-16
  */
 public interface PayOrderMapper extends BaseMapper<PayOrder> {
 

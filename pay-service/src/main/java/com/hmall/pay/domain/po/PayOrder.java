@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 支付订单
+ * pay order
  * </p>
  */
 @Data
@@ -30,92 +30,92 @@ public class PayOrder implements Serializable {
     private Long id;
 
     /**
-     * 业务订单号
+     * business order no.
      */
     private Long bizOrderNo;
 
     /**
-     * 支付单号
+     * pay order no.
      */
     private Long payOrderNo;
 
     /**
-     * 支付用户id
+     * business user id
      */
     private Long bizUserId;
 
     /**
-     * 支付渠道编码
+     * channel code
      */
     private String payChannelCode;
 
     /**
-     * 支付金额，单位分
+     * amount / cents
      */
     private Integer amount;
 
     /**
-     * 支付类型，1：h5,2:小程序，3：公众号，4：扫码，5：余额支付
+     * type，1：h5,2:mini-app，3official account：，4：qr-code，5：balance
      */
     private Integer payType;
 
     /**
-     * 支付状态，0：待提交，1:待支付，2：支付超时或取消，3：支付成功
+     * payment status，0：not committed，1:not paid，2：cancelled/timeout，3：completed
      */
     private Integer status;
 
     /**
-     * 拓展字段，用于传递不同渠道单独处理的字段
+     * expand json
      */
     private String expandJson;
 
     /**
-     * 第三方返回业务码
+     * result code
      */
     private String resultCode;
 
     /**
-     * 第三方返回提示信息
+     * result msg
      */
     private String resultMsg;
 
     /**
-     * 支付成功时间
+     * successful time
      */
     private LocalDateTime paySuccessTime;
 
     /**
-     * 支付超时时间
+     * overtime
      */
     private LocalDateTime payOverTime;
 
     /**
-     * 支付二维码链接
+     * qr-code url
      */
     private String qrCodeUrl;
 
     /**
-     * 创建时间
+     * create time
      */
     private LocalDateTime createTime;
 
     /**
-     * 更新时间
+     * update time
      */
     private LocalDateTime updateTime;
 
     /**
-     * 创建人
+     * creater
      */
     private Long creater;
 
     /**
-     * 更新人
+     * updater
      */
     private Long updater;
 
     /**
-     * 逻辑删除
+     * is delete?
      */
     private Boolean isDelete;
 

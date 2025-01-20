@@ -9,12 +9,12 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
-@ApiModel(description = "支付确认表单实体")
+@ApiModel(description = "pay order dto")
 public class PayOrderFormDTO {
-    @ApiModelProperty("支付订单id不能为空")
-    @NotNull(message = "支付订单id不能为空")
+    @ApiModelProperty("order id must be filled")
+    @NotNull(message = "order id must be filled")
     private Long id;
-    @ApiModelProperty("支付密码")
-    @NotNull(message = "支付密码")
+    @ApiModelProperty("msg")
+    @NotNull(message = "msg")
     private String pw;
 }

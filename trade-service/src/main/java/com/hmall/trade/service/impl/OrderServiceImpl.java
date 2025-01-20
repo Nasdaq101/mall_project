@@ -84,7 +84,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             throw new RuntimeException("not enough stock！");
         }
 
-        //
+        //delay_msg
         rabbitTemplate.convertAndSend(
                 MQConstants.DELAY_EXCHANGE_NAME,
                 MQConstants.DELAY_ORDER_KEY,
