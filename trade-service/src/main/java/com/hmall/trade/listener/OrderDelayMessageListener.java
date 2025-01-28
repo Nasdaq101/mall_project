@@ -37,7 +37,7 @@ public class OrderDelayMessageListener {
             // 4.1.paid
             orderService.markOrderPaySuccess(orderId);
         }else{
-            // TODO 4.2.cancel/rollback stock
+            // TODO cancel/rollback stock
             orderService.cancelOrder(orderId);
         }
     }

@@ -27,10 +27,15 @@ public class ElasticDocumentTest {
     @Autowired
     private IItemService itemService;
 
+//    @Test
+//    void testConnection() {
+//        System.out.println("client= " + client);
+//    }
+
     @BeforeEach
     void setUp() {
         this.client = new RestHighLevelClient(RestClient.builder(
-                HttpHost.create("http://192.168.44.128:9200")
+                HttpHost.create("http://localhost:9200")
         ));
     }
 
@@ -41,18 +46,18 @@ public class ElasticDocumentTest {
 
     @Test
     void testAddDocument() throws IOException {
-        // 1.根据id查询商品数据
+        // 1.get item by id
         Item item = itemService.getById(100002644680L);
-        // 2.转换为文档类型
+        // 2.copy properties
         ItemDoc itemDoc = BeanUtil.copyProperties(item, ItemDoc.class);
-        // 3.将ItemDTO转json
+        // 3.itemDTO to json
         String doc = JSONUtil.toJsonStr(itemDoc);
 
-        // 1.准备Request对象
+        // 1.prepare request object
         IndexRequest request = new IndexRequest("items").id(itemDoc.getId());
-        // 2.准备Json文档
+        // 2.prepare json doc
         request.source(doc, XContentType.JSON);
-        // 3.发送请求
+        // 3.send request
         client.index(request, RequestOptions.DEFAULT);
     }
 }

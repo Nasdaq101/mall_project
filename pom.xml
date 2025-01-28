@@ -38,10 +38,10 @@
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <hutool.version>5.8.11</hutool.version>
         <mysql.version>8.0.23</mysql.version>
-        <elasticsearch.version>7.12.1</elasticsearch.version>
+        <elasticsearch.version>7.17.27</elasticsearch.version>
     </properties>
 
-    <!-- 对依赖包进行管理 -->
+    <!-- dependency management -->
     <dependencyManagement>
         <dependencies>
             <!--spring cloud-->
@@ -60,19 +60,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- 数据库驱动包管理 -->
+            <!-- mysql -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-            <!-- mybatis plus 管理 -->
+            <!-- mybatis plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-            <!--hutool工具包-->
+            <!-- hutool -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
@@ -81,7 +81,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- lombok 管理 -->
+        <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
