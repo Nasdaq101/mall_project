@@ -19,13 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-/**
- * <p>
- * 用户表 服务实现类
- * </p>
- *
- * @author 虎哥
- */
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -39,23 +33,23 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public UserLoginVO login(LoginFormDTO loginDTO) {
-        // 1.数据校验
+        // validate
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
-        // 2.根据用户名或手机号查询
+        // search by username/phoneNo
         User user = lambdaQuery().eq(User::getUsername, username).one();
-        Assert.notNull(user, "用户名错误");
-        // 3.校验是否禁用
+        Assert.notNull(user, "wrong username");
+        // 3.if frozen?
         if (user.getStatus() == UserStatus.FROZEN) {
-            throw new ForbiddenException("用户被冻结");
+            throw new ForbiddenException("this user is under frozen");
         }
-        // 4.校验密码
+        // 4.password?
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new BadRequestException("用户名或密码错误");
+            throw new BadRequestException("username or password wrong!");
         }
-        // 5.生成TOKEN
+        // 5.generate TOKEN
         String token = jwtTool.createToken(user.getId(), jwtProperties.getTokenTTL());
-        // 6.封装VO返回
+        // 6.to vo
         UserLoginVO vo = new UserLoginVO();
         vo.setUserId(user.getId());
         vo.setUsername(user.getUsername());
@@ -66,20 +60,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public void deductMoney(String pw, Integer totalFee) {
-        log.info("开始扣款");
-        // 1.校验密码
+        log.info("Try deduction");
+        // 1.password?
         User user = getById(UserContext.getUser());
         if(user == null || !passwordEncoder.matches(pw, user.getPassword())){
-            // 密码错误
-            throw new BizIllegalException("用户密码错误");
+            // pswd wrong
+            throw new BizIllegalException("wrong password!");
         }
 
-        // 2.尝试扣款
+        // 2.try deduct money
         try {
             baseMapper.updateMoney(UserContext.getUser(), totalFee);
         } catch (Exception e) {
-            throw new RuntimeException("扣款失败，可能是余额不足！", e);
+            throw new RuntimeException("deduction failed，balance might not be enough！", e);
         }
-        log.info("扣款成功");
+        log.info("deduction successful!");
     }
 }

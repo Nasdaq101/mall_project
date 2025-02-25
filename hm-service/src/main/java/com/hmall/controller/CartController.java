@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@Api(tags = "购物车相关接口")
+@Api(tags = "CART CONTROLLER")
 @RestController
 @RequestMapping("/carts")
 @RequiredArgsConstructor
 public class CartController {
     private final ICartService cartService;
 
-    @ApiOperation("添加商品到购物车")
+    @ApiOperation("add to cart")
     @PostMapping
     public void addItem2Cart(@Valid @RequestBody CartFormDTO cartFormDTO){
         cartService.addItem2Cart(cartFormDTO);
     }
 
-    @ApiOperation("更新购物车数据")
+    @ApiOperation("update cart info")
     @PutMapping
     public void updateCart(@RequestBody Cart cart){
         cartService.updateById(cart);
     }
 
-    @ApiOperation("删除购物车中商品")
+    @ApiOperation("delete item from cart")
     @DeleteMapping("{id}")
-    public void deleteCartItem(@Param ("购物车条目id")@PathVariable("id") Long id){
+    public void deleteCartItem(@Param ("cartItem_id")@PathVariable("id") Long id){
         cartService.removeById(id);
     }
 
-    @ApiOperation("查询购物车列表")
+    @ApiOperation("search item in cart")
     @GetMapping
     public List<CartVO> queryMyCarts(){
         return cartService.queryMyCarts();
     }
-    @ApiOperation("批量删除购物车中商品")
-    @ApiImplicitParam(name = "ids", value = "购物车条目id集合")
+    @ApiOperation("batch delete items from cart")
+    @ApiImplicitParam(name = "ids", value = "cartItem_id batch")
     @DeleteMapping
     public void deleteCartItemByIds(@RequestParam("ids") List<Long> ids){
         cartService.removeByItemIds(ids);

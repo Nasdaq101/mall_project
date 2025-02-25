@@ -27,15 +27,15 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 1.添加拦截器
+        // 1.add interceptor
         LoginInterceptor loginInterceptor = new LoginInterceptor(jwtTool);
         InterceptorRegistration registration = registry.addInterceptor(loginInterceptor);
-        // 2.配置拦截路径
+        // 2.set interceptor path
         List<String> includePaths = authProperties.getIncludePaths();
         if (CollUtil.isNotEmpty(includePaths)) {
             registration.addPathPatterns(includePaths);
         }
-        // 3.配置放行路径
+        // 3.set exclude path
         List<String> excludePaths = authProperties.getExcludePaths();
         if (CollUtil.isNotEmpty(excludePaths)) {
             registration.excludePathPatterns(excludePaths);

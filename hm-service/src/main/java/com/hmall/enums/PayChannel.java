@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 public enum PayChannel {
-    wxPay("微信支付"),
-    aliPay("支付宝支付"),
-    balance("余额支付"),
+    wxPay("WECHAT PAY"),
+    aliPay("ALIPAY"),
+    balance("BALANCE PAY"),
     ;
 
     private final String desc;

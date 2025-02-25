@@ -13,13 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * <p>
- * 商品表 服务实现类
- * </p>
- *
- * @author 虎哥
- */
+
 @Service
 public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements IItemService {
 
@@ -30,10 +24,10 @@ public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements II
         try {
             r = executeBatch(items, (sqlSession, entity) -> sqlSession.update(sqlStatement, entity));
         } catch (Exception e) {
-            throw new BizIllegalException("更新库存异常，可能是库存不足!", e);
+            throw new BizIllegalException("Error! stock might be empty!", e);
         }
         if (!r) {
-            throw new BizIllegalException("库存不足！");
+            throw new BizIllegalException("stock empty！");
         }
     }
 
