@@ -1,4 +1,4 @@
-11:47:36:441  INFO 7408 --- [main] com.hmall.item.es.ElasticDocumentTest    : The following 1 profile is active: "local"
+11:47:36:441  INFO 7408 --- [main] es.com.yunfei.item.ElasticDocumentTest    : The following 1 profile is active: "local"
 11:47:38:500  INFO 7408 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c4208034-c7b7-394a-b3fc-a0441bdfa773
 11:47:38:731  INFO 7408 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'io.seata.spring.boot.autoconfigure.SeataCoreAutoConfiguration' of type [io.seata.spring.boot.autoconfigure.SeataCoreAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 11:47:38:736  INFO 7408 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'springApplicationContextProvider' of type [io.seata.spring.boot.autoconfigure.provider.SpringApplicationContextProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -13,7 +13,7 @@
 11:47:38:904  INFO 7408 --- [main] i.s.s.b.a.SeataAutoConfiguration         : Automatically configure Seata
 11:47:39:091  INFO 7408 --- [main] io.seata.config.ConfigurationFactory     : load Configuration from :Spring Configuration
 11:47:39:110  INFO 7408 --- [main] io.seata.config.ConfigurationFactory     : load Configuration from :Spring Configuration
-11:47:39:350  INFO 7408 --- [main] i.s.s.a.GlobalTransactionScanner         : Initializing Global Transaction Clients ... 
+11:47:39:350  INFO 7408 --- [main] i.s.s.a.GlobalTransactionScanner         : Initializing Global Transaction Clients ...
 11:47:39:584  INFO 7408 --- [main] i.s.core.rpc.netty.NettyClientBootstrap  : NettyClientBootstrap has started
 11:47:39:863  INFO 7408 --- [main] com.alibaba.nacos.common.remote.client   : [RpcClientFactory] create a new rpc client of 5b582b18-bb51-4d2e-aa0c-077d6fb1079a
 11:47:39:864  INFO 7408 --- [main] com.alibaba.nacos.common.remote.client   : [5b582b18-bb51-4d2e-aa0c-077d6fb1079a] RpcClient init label, labels = {module=naming, source=sdk}
@@ -37,7 +37,7 @@
 11:47:41:144  INFO 7408 --- [main] i.s.rm.datasource.xa.ResourceManagerXA   : ResourceManagerXA init ...
 11:47:41:156  INFO 7408 --- [main] i.s.core.rpc.netty.NettyClientBootstrap  : NettyClientBootstrap has started
 11:47:41:156  INFO 7408 --- [main] i.s.s.a.GlobalTransactionScanner         : Resource Manager is initialized. applicationId[item-service] txServiceGroup[hmall]
-11:47:41:156  INFO 7408 --- [main] i.s.s.a.GlobalTransactionScanner         : Global Transaction Clients are initialized. 
+11:47:41:156  INFO 7408 --- [main] i.s.s.a.GlobalTransactionScanner         : Global Transaction Clients are initialized.
 11:47:41:160  INFO 7408 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'io.seata.spring.boot.autoconfigure.SeataDataSourceAutoConfiguration' of type [io.seata.spring.boot.autoconfigure.SeataDataSourceAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 11:47:41:854  INFO 7408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 11:47:42:981  INFO 7408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
@@ -60,7 +60,7 @@
 11:47:50:094  INFO 7408 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
 11:47:50:104  INFO 7408 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 11:47:50:229  INFO 7408 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-11:47:50:458  INFO 7408 --- [main] com.hmall.item.es.ElasticDocumentTest    : Started ElasticDocumentTest in 20.772 seconds (JVM running for 24.598)
+11:47:50:458  INFO 7408 --- [main] es.com.yunfei.item.ElasticDocumentTest    : Started ElasticDocumentTest in 20.772 seconds (JVM running for 24.598)
 11:47:50:466  INFO 7408 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=item-service.yaml, group=DEFAULT_GROUP
 11:47:50:467  INFO 7408 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=item-service-local.yaml, group=DEFAULT_GROUP
 11:47:50:469  INFO 7408 --- [main] c.a.c.n.refresh.NacosContextRefresher    : [Nacos Config] Listening config: dataId=item-service, group=DEFAULT_GROUP
