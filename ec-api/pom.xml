@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.shy</groupId>
-    <artifactId>hm-api</artifactId>
+    <artifactId>ecom-api</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
