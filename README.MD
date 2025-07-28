@@ -1,5 +1,5 @@
 # ABOUT THIS PROJECT
-MALL PROJECT is an e-commerce system developed based on the most popular microservices architecture. It aims to provide users with an efficient and smooth shopping experience.
+This project is an e-commerce system developed based on the most popular microservices architecture. It aims to provide users with an efficient and smooth online shopping experience.
 
 # TECHNOLOGY STACK
 
